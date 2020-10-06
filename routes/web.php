@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/report', [App\Http\Controllers\WelcomeController::class, 'report'])->name('report');
 
 Auth::routes([
     'register' => false,
