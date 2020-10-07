@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $signatureList = App\DriftersWormholeSystems::SIGNATURE_LIST;
+    $signatureList[] = '非流浪洞';
+    return view('welcome', [
+        'systemOptions' => App\NeedWatchSystemMap::toJson(),
+        'signatureList' => $signatureList,
+    ]);
 });
 Route::post('/report', [App\Http\Controllers\WelcomeController::class, 'report'])->name('report');
 
