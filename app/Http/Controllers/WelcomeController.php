@@ -35,6 +35,9 @@ class WelcomeController extends Controller
                 'string',
                 function ($attribute, $value, $fail) {
                     if (!in_array($value ,DriftersWormholeSystems::SIGNATURE_LIST)) {
+                        if ($value === '非流浪洞') {
+                            return;
+                        }
                         $fail($attribute . ' is invalid.');
                     }
                 }
