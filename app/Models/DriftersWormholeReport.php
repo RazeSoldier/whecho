@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
  * @property string $system
  * @property string $signature_name
  * @property string $submitter
+ * @property string $submitter_ip
  * @property string $notice
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -28,6 +29,7 @@ use Illuminate\Support\Carbon;
  * @method static Builder|DriftersWormholeReport whereSignatureName($value)
  * @method static Builder|DriftersWormholeReport whereSubmitter($value)
  * @method static Builder|DriftersWormholeReport whereSystem($value)
+ * @method static Builder|DriftersWormholeReport whereSubmitterIp($value)
  * @method static Builder|DriftersWormholeReport whereUpdatedAt($value)
  * @mixin Eloquent
  */
@@ -35,5 +37,5 @@ class DriftersWormholeReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['system', 'signature_name', 'submitter', 'notice'];
+    protected $fillable = ['system', 'signature_name', 'submitter', 'notice', 'submitter_ip'];
 }

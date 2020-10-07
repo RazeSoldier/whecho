@@ -19,6 +19,7 @@ class CreateDriftersWormholeReportsTable extends Migration
             $table->string('signature_name');
             $table->string('submitter');
             $table->string('notice')->default('');
+            $table->ipAddress('submitter_ip');
             $table->timestamps();
         });
     }

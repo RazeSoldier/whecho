@@ -50,6 +50,7 @@ class WelcomeController extends Controller
             'submitter' => $data['submitter'],
             'signature_name' => $data['signatureName'],
             'notice' => $data['notice'] ?? '',
+            'submitter_ip' => $request->getClientIp(),
         ]);
 
         return ['status' => 'ok'];
