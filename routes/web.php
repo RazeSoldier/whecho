@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $signatureList = App\DriftersWormholeSystems::SIGNATURE_LIST;
-    $signatureList[] = '非流浪洞';
+    $signatureList[] = '无流浪洞';
     return view('welcome', [
         'systemOptions' => App\NeedWatchSystemMap::toJson(),
         'signatureList' => $signatureList,
