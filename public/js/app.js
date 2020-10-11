@@ -100416,7 +100416,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-form-item",
-        { attrs: { label: "星系" } },
+        { attrs: { label: "星系", required: "" } },
         [
           _c("el-cascader", {
             attrs: {
@@ -100438,7 +100438,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-form-item",
-        { attrs: { label: "洞口编号" } },
+        { attrs: { label: "洞口编号", required: "" } },
         [
           _c(
             "el-select",
@@ -100466,7 +100466,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "el-form-item",
-        { attrs: { label: "提交人" } },
+        { attrs: { label: "提交人", required: "" } },
         [
           _c("el-input", {
             attrs: { maxlength: "40", "show-word-limit": "" },

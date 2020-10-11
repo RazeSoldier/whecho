@@ -1,11 +1,11 @@
 <template>
     <el-form :model="form" v-loading="loading" label-width="80px">
         <p>本页面用于报告流浪洞的情况</p>
-        <el-form-item label="星系">
+        <el-form-item label="星系" required>
             <el-cascader v-model="form.system" :options="systemOptions" :props="{ expandTrigger: 'hover' }" filterable>
             </el-cascader>
         </el-form-item>
-        <el-form-item label="洞口编号">
+        <el-form-item label="洞口编号" required>
             <el-select v-model="form.signatureName" filterable>
                 <el-option
                     v-for="item in signatureList"
@@ -15,7 +15,7 @@
                 </el-option>
             </el-select>
         </el-form-item>
-        <el-form-item label="提交人">
+        <el-form-item label="提交人" required>
             <el-input v-model="form.submitter" maxlength="40" show-word-limit></el-input>
         </el-form-item>
         <el-form-item label="备注">
