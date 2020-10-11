@@ -22,6 +22,7 @@ Vue.use(ElementUI);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('wormhole-report-form', require('./components/WormholeReportForm').default);
+Vue.component('drifters-wh-state-table', require('./components/DriftersWormholeStateTable').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

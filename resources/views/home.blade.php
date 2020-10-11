@@ -2,21 +2,15 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-start">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
+            <el-tabs>
+                <el-tab-pane label="流浪洞情况">
+                    <drifters-wh-state-table state-fetch-url="{{route('drifters-wormhole-state')}}"
+                        history-fetch-url="{{route('system-history')}}">
+                    </drifters-wh-state-table>
+                </el-tab-pane>
+            </el-tabs>
         </div>
     </div>
 </div>

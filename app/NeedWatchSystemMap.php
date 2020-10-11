@@ -20,6 +20,21 @@ class NeedWatchSystemMap
     }
 
     /**
+     * 获得所有需要监视的星系名列表
+     * @return array 所有需要监视的星系名列表
+     */
+    public static function getSystemList(): array
+    {
+        static $cache = [];
+        if ($cache === []) {
+            foreach (self::getMap() as $systems) {
+                $cache = array_merge($cache, $systems);
+            }
+        }
+        return $cache;
+    }
+
+    /**
      * 用于前端级联选择器的选项提供器
      * @return string 级联选择器的选项JSON
      */

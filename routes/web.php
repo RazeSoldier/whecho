@@ -30,3 +30,7 @@ Auth::routes([
 ]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/drifters-wormhole-state', [App\Http\Controllers\HomeController::class, 'getDriftersWormholeState'])
+    ->name('drifters-wormhole-state');
+Route::get('/system-history/{systemName?}', [App\Http\Controllers\HomeController::class, 'getSystemHistory'])
+    ->name('system-history');
