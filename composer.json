@@ -1,12 +1,18 @@
 {
-    "name": "laravel/laravel",
+    "name": "razesoldier/whecho",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Wormhole Reporting System",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "RazeSoldier",
+            "email": "razesoldier@outlook.com"
+        }
+    ],
     "require": {
         "php": "^7.3",
         "fideloper/proxy": "^4.2",
