@@ -34,3 +34,5 @@ Route::get('/drifters-wormhole-state', [App\Http\Controllers\HomeController::cla
     ->name('drifters-wormhole-state');
 Route::get('/system-history/{systemName?}', [App\Http\Controllers\HomeController::class, 'getSystemHistory'])
     ->name('system-history');
+Route::post('/report/delete/{id?}', [App\Http\Controllers\HomeController::class, 'deleteReport'])
+    ->name('delete-report');

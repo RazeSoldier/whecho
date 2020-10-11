@@ -16,6 +16,7 @@ class DriftersWormholeReportResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'signature_name' => $this->signature_name,
             'submitter' => $this->submitter,
             'submit_time' => $this->created_at->addHours(8)->__toString(),

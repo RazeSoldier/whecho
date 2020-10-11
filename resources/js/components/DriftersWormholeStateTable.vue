@@ -31,7 +31,7 @@
                         <el-button
                             size="mini"
                             type="danger"
-                            @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+                            @click="deleteReport(scope.row.id)">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -42,7 +42,7 @@
 <script>
 export default {
     name: "DriftersWormholeStateTable",
-    props: ['stateFetchUrl', 'historyFetchUrl'],
+    props: ['stateFetchUrl', 'historyFetchUrl', 'deleteReportUrl'],
     data() {
         return {
             tableData: [],
@@ -81,6 +81,25 @@ export default {
                 this.historyCache[system] = json.data;
                 this.historyData = json.data;
                 this.dialogLoading = false;
+            });
+        },
+        deleteReport(reportId) {
+            fetch(this.deleteReportUrl + '/' + reportId, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                },
+            }).then(res => res.json()).then(json => {
+                if (json.status === 'ok') {
+                    for (const key in this.historyData) {
+                        if (this.historyData[key].id === reportId) {
+                            this.historyData.splice(key, 1);
+                        }
+                    }
+                    this.$message.success('删除成功');
+                }
             });
         }
     },

@@ -87,4 +87,15 @@ class HomeController extends Controller
 
         return DriftersWormholeReportResource::collection(DriftersWormholeReport::whereSystem($systemName)->get());
     }
+
+    /**
+     * @Route("/report/delete/{id}", name="delete-report", methods={"POST"})
+     * @param int $id
+     */
+    public function deleteReport(int $id)
+    {
+        $report = DriftersWormholeReport::findOrFail($id);
+        $report->delete();
+        return ['status' => 'ok'];
+    }
 }

@@ -3579,7 +3579,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DriftersWormholeStateTable",
-  props: ['stateFetchUrl', 'historyFetchUrl'],
+  props: ['stateFetchUrl', 'historyFetchUrl', 'deleteReportUrl'],
   data: function data() {
     return {
       tableData: [],
@@ -3628,6 +3628,30 @@ __webpack_require__.r(__webpack_exports__);
         _this2.historyCache[system] = json.data;
         _this2.historyData = json.data;
         _this2.dialogLoading = false;
+      });
+    },
+    deleteReport: function deleteReport(reportId) {
+      var _this3 = this;
+
+      fetch(this.deleteReportUrl + '/' + reportId, {
+        method: 'POST',
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        if (json.status === 'ok') {
+          for (var key in _this3.historyData) {
+            if (_this3.historyData[key].id === reportId) {
+              _this3.historyData.splice(key, 1);
+            }
+          }
+
+          _this3.$message.success('删除成功');
+        }
       });
     }
   },
@@ -100331,7 +100355,7 @@ var render = function() {
                             attrs: { size: "mini", type: "danger" },
                             on: {
                               click: function($event) {
-                                return _vm.handleDelete(scope.$index, scope.row)
+                                return _vm.deleteReport(scope.row.id)
                               }
                             }
                           },
