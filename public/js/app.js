@@ -3595,7 +3595,10 @@ __webpack_require__.r(__webpack_exports__);
       historyTableVisible: false,
       historySystemName: null,
       dialogLoading: false,
-      historyData: []
+      historyData: [],
+      rowStyle: {
+        padding: '5px 0'
+      }
     };
   },
   mounted: function mounted() {
@@ -100242,7 +100245,7 @@ var render = function() {
             }
           ],
           staticClass: "backtop",
-          attrs: { data: _vm.tableData }
+          attrs: { data: _vm.tableData, "cell-style": _vm.rowStyle }
         },
         [
           _c("el-table-column", {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-table :data="tableData" v-loading="loading" class="backtop">
+        <el-table :data="tableData" v-loading="loading" class="backtop" :cell-style="rowStyle">
             <el-table-column prop="region" label="星域" width="80px" sortable>
             </el-table-column>
             <el-table-column prop="system" label="星系" width="100px" sortable>
@@ -59,6 +59,9 @@ export default {
             historySystemName: null,
             dialogLoading: false,
             historyData: [],
+            rowStyle: {
+                padding: '5px 0'
+            }
         }
     },
     mounted() {
