@@ -48,9 +48,17 @@ class HomeController extends Controller
                     'region' => $region,
                     'system' => $system,
                     'info' => '',
+                    'isMultiple' => false,
                 ];
 
                 $reports->where('system', $system)->whenNotEmpty(function (Collection $collection) use (&$row) {
+                    // 检查24小时内是否有出现过不一样的流浪洞
+                    collect($collection->all())->duplicatesStrict('signature_name')->reject(function ($value) {
+                        return $value === '无流浪洞';
+                    })->whenNotEmpty(function () use (&$row) {
+                        $row['isMultiple'] = true;
+                    });
+
                     $var = $collection->sortByDesc('created_at')->first->get();
                     $row['info'] = [
                         'signature_name' => $var->signature_name,

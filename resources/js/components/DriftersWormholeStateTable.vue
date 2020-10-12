@@ -1,6 +1,12 @@
 <template>
     <div>
-        <el-table :data="tableData" v-loading="loading" class="backtop" :cell-style="rowStyle">
+        <small>高亮的星系表示24小时内出现过2次以上不一样的流浪洞</small>
+        <el-table
+            :data="tableData"
+            v-loading="loading"
+            class="backtop"
+            :cell-style="cellStyle"
+            :row-style="rowStyle">
             <el-table-column prop="region" label="星域" width="80px" sortable>
             </el-table-column>
             <el-table-column prop="system" label="星系" width="100px" sortable>
@@ -59,7 +65,7 @@ export default {
             historySystemName: null,
             dialogLoading: false,
             historyData: [],
-            rowStyle: {
+            cellStyle: {
                 padding: '5px 0'
             }
         }
@@ -104,6 +110,13 @@ export default {
                     this.$message.success('删除成功');
                 }
             });
+        },
+        rowStyle({row}) {
+            if (row.isMultiple) {
+                return {
+                    background: 'oldlace',
+                };
+            }
         }
     },
     computed: {

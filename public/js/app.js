@@ -3577,6 +3577,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DriftersWormholeStateTable",
   props: ['stateFetchUrl', 'historyFetchUrl', 'deleteReportUrl'],
@@ -3596,7 +3602,7 @@ __webpack_require__.r(__webpack_exports__);
       historySystemName: null,
       dialogLoading: false,
       historyData: [],
-      rowStyle: {
+      cellStyle: {
         padding: '5px 0'
       }
     };
@@ -3656,6 +3662,15 @@ __webpack_require__.r(__webpack_exports__);
           _this3.$message.success('删除成功');
         }
       });
+    },
+    rowStyle: function rowStyle(_ref) {
+      var row = _ref.row;
+
+      if (row.isMultiple) {
+        return {
+          background: 'oldlace'
+        };
+      }
     }
   },
   computed: {
@@ -100233,6 +100248,10 @@ var render = function() {
   return _c(
     "div",
     [
+      _c("small", [
+        _vm._v("高亮的星系表示24小时内出现过2次以上不一样的流浪洞")
+      ]),
+      _vm._v(" "),
       _c(
         "el-table",
         {
@@ -100245,7 +100264,11 @@ var render = function() {
             }
           ],
           staticClass: "backtop",
-          attrs: { data: _vm.tableData, "cell-style": _vm.rowStyle }
+          attrs: {
+            data: _vm.tableData,
+            "cell-style": _vm.cellStyle,
+            "row-style": _vm.rowStyle
+          }
         },
         [
           _c("el-table-column", {
