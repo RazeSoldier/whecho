@@ -100246,15 +100246,25 @@ var render = function() {
         },
         [
           _c("el-table-column", {
-            attrs: { prop: "region", label: "星域", width: "70px" }
+            attrs: {
+              prop: "region",
+              label: "星域",
+              width: "80px",
+              sortable: ""
+            }
           }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { prop: "system", label: "星系", width: "100px" }
+            attrs: {
+              prop: "system",
+              label: "星系",
+              width: "100px",
+              sortable: ""
+            }
           }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { label: "洞口", prop: "info" },
+            attrs: { label: "洞口", prop: "info", sortable: "" },
             scopedSlots: _vm._u([
               {
                 key: "default",

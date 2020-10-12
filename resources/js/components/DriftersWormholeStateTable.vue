@@ -1,11 +1,11 @@
 <template>
     <div>
         <el-table :data="tableData" v-loading="loading" class="backtop">
-            <el-table-column prop="region" label="星域" width="70px">
+            <el-table-column prop="region" label="星域" width="80px" sortable>
             </el-table-column>
-            <el-table-column prop="system" label="星系" width="100px">
+            <el-table-column prop="system" label="星系" width="100px" sortable>
             </el-table-column>
-            <el-table-column label="洞口" prop="info">
+            <el-table-column label="洞口" prop="info" sortable>
                 <template slot-scope="scope">
                     <span v-if="scope.row.info !== ''">
                         <span>{{ scope.row.info.signature_name }}，提交人：{{ scope.row.info.submitter }}，提交时间：{{ scope.row.info.time }}</span>
