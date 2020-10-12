@@ -40,7 +40,7 @@ class HomeController extends Controller
     public function getDriftersWormholeState()
     {
         $resp = [];
-        $time = Carbon::now()->subDays(2);
+        $time = Carbon::now()->subDay();
         $reports = DriftersWormholeReport::where('created_at', '>', $time->__toString())->get();
         collect(NeedWatchSystemMap::getMap())->each(function (array $systems, string $region) use (&$resp, $reports) {
             foreach ($systems as $system) {
