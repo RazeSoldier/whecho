@@ -63,7 +63,7 @@ class HomeController extends Controller
                     $row['info'] = [
                         'signature_name' => $var->signature_name,
                         'submitter' => $var->submitter,
-                        'time' => $var->created_at->__toString(),
+                        'time' => $var->created_at->addHours(8)->__toString(),
                     ];
                 });
                 $resp[] = $row;
