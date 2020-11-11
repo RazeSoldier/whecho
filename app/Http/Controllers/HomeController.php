@@ -53,10 +53,14 @@ class HomeController extends Controller
 
                 $reports->where('system', $system)->whenNotEmpty(function (Collection $collection) use (&$row) {
                     // 检查24小时内是否有出现过不一样的流浪洞
-                    collect($collection->all())->duplicatesStrict('signature_name')->reject(function ($value) {
-                        return $value === '无流浪洞';
-                    })->whenNotEmpty(function () use (&$row) {
-                        $row['isMultiple'] = true;
+                    collect($collection->all())->reject(function (DriftersWormholeReport $report) {
+                        return $report->signature_name === '无流浪洞';
+                    })->whenNotEmpty(function (Collection $collection) use (&$row) {
+                        if ($collection->count() > 1) {
+                            $collection->duplicatesStrict('signature_name')->whenEmpty(function () use (&$row) {
+                                $row['isMultiple'] = true;
+                            });
+                        }
                     });
 
                     $var = $collection->sortByDesc('created_at')->first->get();
