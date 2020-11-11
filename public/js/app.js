@@ -3604,7 +3604,48 @@ __webpack_require__.r(__webpack_exports__);
       historyData: [],
       cellStyle: {
         padding: '5px 0'
-      }
+      },
+      signatureNameFilters: [{
+        text: '无流浪洞',
+        value: '无流浪洞'
+      }, {
+        text: 'V928',
+        value: 'V928'
+      }, {
+        text: 'R259',
+        value: 'R259'
+      }, {
+        text: 'S877',
+        value: 'S877'
+      }, {
+        text: 'B735',
+        value: 'B735'
+      }, {
+        text: 'C414',
+        value: 'C414'
+      }],
+      regionFilters: [{
+        text: '对舞',
+        value: '对舞'
+      }, {
+        text: '静寂谷',
+        value: '静寂谷'
+      }, {
+        text: '特布特',
+        value: '特布特'
+      }, {
+        text: '黑渊',
+        value: '黑渊'
+      }, {
+        text: '维纳尔',
+        value: '维纳尔'
+      }, {
+        text: '血脉',
+        value: '血脉'
+      }, {
+        text: '特纳',
+        value: '特纳'
+      }]
     };
   },
   mounted: function mounted() {
@@ -3671,6 +3712,16 @@ __webpack_require__.r(__webpack_exports__);
           background: 'oldlace'
         };
       }
+    },
+    signatureNameFilter: function signatureNameFilter(value, row) {
+      if (row.info !== '') {
+        return value === row.info.signature_name;
+      }
+
+      return false;
+    },
+    regionFilter: function regionFilter(value, row) {
+      return value === row.region;
     }
   },
   computed: {
@@ -100275,8 +100326,10 @@ var render = function() {
             attrs: {
               prop: "region",
               label: "星域",
-              width: "80px",
-              sortable: ""
+              width: "90px",
+              sortable: "",
+              filters: _vm.regionFilters,
+              "filter-method": _vm.regionFilter
             }
           }),
           _vm._v(" "),
@@ -100290,7 +100343,13 @@ var render = function() {
           }),
           _vm._v(" "),
           _c("el-table-column", {
-            attrs: { label: "洞口", prop: "info", sortable: "" },
+            attrs: {
+              label: "洞口",
+              prop: "info",
+              sortable: "",
+              filters: _vm.signatureNameFilters,
+              "filter-method": _vm.signatureNameFilter
+            },
             scopedSlots: _vm._u([
               {
                 key: "default",

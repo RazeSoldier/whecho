@@ -7,11 +7,11 @@
             class="backtop"
             :cell-style="cellStyle"
             :row-style="rowStyle">
-            <el-table-column prop="region" label="星域" width="80px" sortable>
+            <el-table-column prop="region" label="星域" width="90px" sortable :filters="regionFilters" :filter-method="regionFilter">
             </el-table-column>
             <el-table-column prop="system" label="星系" width="100px" sortable>
             </el-table-column>
-            <el-table-column label="洞口" prop="info" sortable>
+            <el-table-column label="洞口" prop="info" sortable :filters="signatureNameFilters" :filter-method="signatureNameFilter">
                 <template slot-scope="scope">
                     <span v-if="scope.row.info !== ''">
                         <span>{{ scope.row.info.signature_name }}，提交人：{{ scope.row.info.submitter }}，提交时间：{{ scope.row.info.time }}</span>
@@ -67,7 +67,24 @@ export default {
             historyData: [],
             cellStyle: {
                 padding: '5px 0'
-            }
+            },
+            signatureNameFilters: [
+                {text: '无流浪洞', value: '无流浪洞'},
+                {text: 'V928', value: 'V928'},
+                {text: 'R259', value: 'R259'},
+                {text: 'S877', value: 'S877'},
+                {text: 'B735', value: 'B735'},
+                {text: 'C414', value: 'C414'},
+            ],
+            regionFilters: [
+                {text: '对舞', value: '对舞'},
+                {text: '静寂谷', value: '静寂谷'},
+                {text: '特布特', value: '特布特'},
+                {text: '黑渊', value: '黑渊'},
+                {text: '维纳尔', value: '维纳尔'},
+                {text: '血脉', value: '血脉'},
+                {text: '特纳', value: '特纳'},
+            ],
         }
     },
     mounted() {
@@ -117,6 +134,15 @@ export default {
                     background: 'oldlace',
                 };
             }
+        },
+        signatureNameFilter(value, row) {
+            if (row.info !== '') {
+                return value === row.info.signature_name;
+            }
+            return false;
+        },
+        regionFilter(value, row) {
+            return value === row.region;
         }
     },
     computed: {
