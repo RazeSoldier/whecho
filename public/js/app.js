@@ -3583,6 +3583,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DriftersWormholeStateTable",
   props: ['stateFetchUrl', 'historyFetchUrl', 'deleteReportUrl'],
@@ -100345,8 +100359,7 @@ var render = function() {
           _c("el-table-column", {
             attrs: {
               label: "洞口",
-              prop: "info",
-              sortable: "",
+              width: "80px",
               filters: _vm.signatureNameFilters,
               "filter-method": _vm.signatureNameFilter
             },
@@ -100357,15 +100370,51 @@ var render = function() {
                   return [
                     scope.row.info !== ""
                       ? _c("span", [
-                          _c("span", [
-                            _vm._v(
+                          _vm._v(
+                            "\n                    " +
                               _vm._s(scope.row.info.signature_name) +
-                                "，提交人：" +
-                                _vm._s(scope.row.info.submitter) +
-                                "，提交时间：" +
-                                _vm._s(scope.row.info.time)
-                            )
-                          ])
+                              "\n                "
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                }
+              }
+            ])
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: { label: "提交人", width: "120px" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(scope) {
+                  return [
+                    scope.row.info !== ""
+                      ? _c("span", [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(scope.row.info.submitter) +
+                              "\n                "
+                          )
+                        ])
+                      : _vm._e()
+                  ]
+                }
+              }
+            ])
+          }),
+          _vm._v(" "),
+          _c("el-table-column", {
+            attrs: { label: "提交时间", prop: "info.time" },
+            scopedSlots: _vm._u([
+              {
+                key: "default",
+                fn: function(scope) {
+                  return [
+                    scope.row.info !== ""
+                      ? _c("span", [
+                          _c("span", [_vm._v(_vm._s(scope.row.info.time))])
                         ])
                       : _vm._e(),
                     _vm._v(" "),

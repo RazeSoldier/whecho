@@ -11,10 +11,24 @@
             </el-table-column>
             <el-table-column prop="system" label="星系" width="100px" sortable>
             </el-table-column>
-            <el-table-column label="洞口" prop="info" sortable :filters="signatureNameFilters" :filter-method="signatureNameFilter">
+            <el-table-column label="洞口" width="80px" :filters="signatureNameFilters" :filter-method="signatureNameFilter">
                 <template slot-scope="scope">
                     <span v-if="scope.row.info !== ''">
-                        <span>{{ scope.row.info.signature_name }}，提交人：{{ scope.row.info.submitter }}，提交时间：{{ scope.row.info.time }}</span>
+                        {{ scope.row.info.signature_name }}
+                    </span>
+                </template>
+            </el-table-column>
+            <el-table-column label="提交人" width="120px">
+                <template slot-scope="scope">
+                    <span v-if="scope.row.info !== ''">
+                        {{ scope.row.info.submitter }}
+                    </span>
+                </template>
+            </el-table-column>
+            <el-table-column label="提交时间" prop="info.time">
+                <template slot-scope="scope">
+                    <span v-if="scope.row.info !== ''">
+                        <span>{{ scope.row.info.time }}</span>
                     </span>
                     <span style="float: right">
                         <el-button size="mini" @click="showHistory(scope.row.system)">显示历史记录</el-button>
